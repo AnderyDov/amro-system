@@ -9,7 +9,7 @@
 td,
 th {
     border: 1px solid var(--secondary);
-    padding: 3px;
+    padding: 3px 10px;
     border-collapse: collapse;
     text-align: center;
 }

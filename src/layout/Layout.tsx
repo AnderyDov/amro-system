@@ -4,7 +4,7 @@ import Header from './Header/Header';
 import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.props';
 import Sidebar from './Sidebar/Sidebar';
-import cn from 'classnames';
+import { RecoilRoot } from 'recoil';
 
 function Layout({ children }: LayoutProps): JSX.Element {
     return (
@@ -22,9 +22,11 @@ export default function withLayout<T extends Record<string, unknown>>(
 ) {
     return function withLauoutComponent(props: T): JSX.Element {
         return (
-            <Layout>
-                <Component {...props} />
-            </Layout>
+            <RecoilRoot>
+                <Layout>
+                    <Component {...props} />
+                </Layout>
+            </RecoilRoot>
         );
     };
 }

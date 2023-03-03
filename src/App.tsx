@@ -1,46 +1,22 @@
-import styles from './Content.module.css';
 import withLayout from './layout/Layout';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { Table } from './components';
+import { useRecoilState } from 'recoil';
+import { usersState } from './store/atoms';
+import { handlerFetch } from './api/handlerFetch';
 
 function App(): JSX.Element {
-    const [data, setData] = useState();
-
-    async function handlerFetch() {
-        try {
-            const { data } = await axios.get(
-                'https://retoolapi.dev/Sw0GYS/data',
-            );
-            setData(data);
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    const [data, setData] = useRecoilState(usersState);
 
     useEffect(() => {
-        handlerFetch();
+        handlerFetch(setData);
     }, []);
 
     return (
-        <div className={styles.table}>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                    </tr>
-                    {data &&
-                        [...data].map((el, i) => {
-                            return (
-                                <tr key={i}>
-                                    {/* <td>{el?.id}</td>
-                                    <td>{el?.name}</td> */}
-                                </tr>
-                            );
-                        })}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <button onClick={() => console.log(data)}>click</button>
+            <Table />
+        </>
     );
 }
 
