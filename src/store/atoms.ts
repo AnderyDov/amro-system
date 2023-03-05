@@ -19,3 +19,13 @@ export const itemOffsetState = atom({
     key: 'itemOffsetState',
     default: 0,
 });
+
+export const sortTypeState = atom({
+    key: 'sortTypeState',
+    default: 'ID',
+});
+
+export const sortDirectionState = atom({
+    key: 'sortDirectionState',
+    default: true,
+});

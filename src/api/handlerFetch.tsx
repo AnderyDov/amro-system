@@ -9,7 +9,20 @@ export async function handlerFetch(
         const { data } = await axios.get<IUsers1[] | IUsers2[]>(
             'https://retoolapi.dev/eqsQ4S/users',
         );
-        setData(data);
+        const result = [...data].map((el, i) => {
+            if ('user' in el) {
+                let obj: IUsers1 = {};
+                obj.id = el.id;
+                obj.name = el.user.name;
+                obj.lastName = el.user.lastName;
+                obj.birthDate = el.user.birthDate;
+                obj.access = el.user.access;
+                return obj;
+            } else {
+                return el;
+            }
+        });
+        setData(result);
     } catch (err) {
         console.log(err);
     }

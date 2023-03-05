@@ -13,6 +13,23 @@ th {
     border-collapse: collapse;
     text-align: center;
 }
+.table th:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+.sortActive {
+    background-color: var(--secondary);
+}
+th > span {
+    width: 100%;
+    line-height: normal;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.down {
+    rotate: 180deg;
+}
 
 .table svg {
     width: 20px;

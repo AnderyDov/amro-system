@@ -5,7 +5,7 @@ import cn from 'classnames';
 export default function Header({ className, ...props }: HeaderProps) {
     return (
         <header className={cn(className, styles.header)} {...props}>
-            HEADER
+            AMRO-SYSTEM TEST TASK
         </header>
     );
 }

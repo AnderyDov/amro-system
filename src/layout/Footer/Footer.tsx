@@ -18,23 +18,20 @@ export default function Footer({ className, ...props }: FooterProps) {
     const users = useRecoilValue<IUsers1[] | IUsers2[]>(usersState);
 
     function PaginatedItems({ itemsPerPage }: { itemsPerPage: number }) {
-        const [, setCurrentItems] = useRecoilState<any>(currentItemState);
+        const [currentItems, setCurrentItems] =
+            useRecoilState<any>(currentItemState);
         const [pageCount, setPageCount] = useRecoilState<any>(pageCountState);
         const [itemOffset, setItemOffset] =
             useRecoilState<any>(itemOffsetState);
 
         useEffect(() => {
             const endOffset = itemOffset + itemsPerPage;
-            console.log(`Loading items from ${itemOffset} to ${endOffset}`);
             setCurrentItems(users.slice(itemOffset, endOffset));
             setPageCount(Math.ceil(users.length / itemsPerPage));
         }, [itemOffset, itemsPerPage]);
 
         const handlePageClick = (event: { selected: number }) => {
             const newOffset = (event.selected * itemsPerPage) % items.length;
-            console.log(
-                `User requested page number ${event.selected}, which is offset ${newOffset}`,
-            );
             setItemOffset(newOffset);
         };
 
