@@ -1,24 +1,23 @@
 import styles from './Table.module.css';
 import { TableProps } from './Table.props';
 import { useRecoilValue } from 'recoil';
-import { usersState } from '../../store/atoms';
+import { usersState, currentItemState } from '../../store/atoms';
 import { IUsers1, IUsers2 } from '../../interfaces/users.interface';
 import Ok from './ok.svg';
 import Ban from './ban.svg';
 
 function checkToEmpty(string: string) {
-    return string !== '' ? string : 'неизвестно';
+    return string !== '' && string ? string : 'неизвестно';
 }
 
 export function Table({ ...props }: TableProps): JSX.Element {
-    const users = useRecoilValue<IUsers1[] | IUsers2[]>(usersState);
+    const users = useRecoilValue<IUsers1[] | IUsers2[]>(currentItemState);
 
     return (
         <div className={styles.table}>
             <table>
                 <tbody>
                     <tr>
-                        <th>№</th>
                         <th>ID</th>
                         <th>NAME</th>
                         <th>LASTNAME</th>
@@ -31,7 +30,6 @@ export function Table({ ...props }: TableProps): JSX.Element {
                             if ('user' in el) {
                                 return (
                                     <tr key={el.id}>
-                                        <td>{i}</td>
                                         <td>{checkToEmpty(el.id)}</td>
                                         <td>{checkToEmpty(el.user.name)}</td>
                                         <td>
@@ -49,7 +47,6 @@ export function Table({ ...props }: TableProps): JSX.Element {
                             } else {
                                 return (
                                     <tr key={el.id}>
-                                        <td>{i}</td>
                                         <td>{checkToEmpty(el.id)}</td>
                                         <td>{checkToEmpty(el.name)}</td>
                                         <td>{checkToEmpty(el.lastName)}</td>

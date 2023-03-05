@@ -5,3 +5,24 @@
     color: var(--white);
     padding: 10px;
 }
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.pageItem {
+    margin: 2px;
+    padding: 5px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.pageItem:hover {
+    color: var(--cyan);
+}
+.active {
+    color: var(--cyan);
+    border-bottom: 1px solid var(--cyan);
+}

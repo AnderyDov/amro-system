@@ -6,17 +6,13 @@ import { usersState } from './store/atoms';
 import { handlerFetch } from './api/handlerFetch';
 
 function App(): JSX.Element {
-    const [, setData] = useRecoilState<any>(usersState);
+    const [data, setData] = useRecoilState<any>(usersState);
 
     useEffect(() => {
         handlerFetch(setData);
     }, []);
 
-    return (
-        <>
-            <Table />
-        </>
-    );
+    return <Table />;
 }
 
 export default withLayout(App);
