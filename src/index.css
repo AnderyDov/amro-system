@@ -26,14 +26,15 @@
     --green: #257e39;
     --blue: #252e7e;
     --cyan: #15698d;
+    --red: #ff0000;
 }
 html,
 body,
 #root {
     width: 100%;
-    max-width: 1280px;
     height: 100%;
     margin: 0;
     padding: 0;
     color: var(--white);
+    background: var(--gray);
 }

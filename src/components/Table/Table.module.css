@@ -13,3 +13,8 @@ th {
     border-collapse: collapse;
     text-align: center;
 }
+
+.table svg {
+    width: 20px;
+    height: 20px;
+}

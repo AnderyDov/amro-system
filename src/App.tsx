@@ -6,7 +6,7 @@ import { usersState } from './store/atoms';
 import { handlerFetch } from './api/handlerFetch';
 
 function App(): JSX.Element {
-    const [data, setData] = useRecoilState(usersState);
+    const [, setData] = useRecoilState<any>(usersState);
 
     useEffect(() => {
         handlerFetch(setData);
@@ -14,7 +14,6 @@ function App(): JSX.Element {
 
     return (
         <>
-            <button onClick={() => console.log(data)}>click</button>
             <Table />
         </>
     );
